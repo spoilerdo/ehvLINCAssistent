@@ -1,6 +1,5 @@
 package com.ehvlinc.assistantservice.Static;
 
-import com.ehvlinc.assistantservice.Config.GoogleAuthentication.GoogleAuthenticationConfig;
 import com.ehvlinc.assistantservice.Static.Enitities.AuthCredentials;
 import com.ehvlinc.assistantservice.Web.Controllers.AssistentController;
 import com.google.auth.Credentials;
@@ -39,10 +38,6 @@ import java.util.Base64;
 public class GoogleAuthentication {
 
     static Logger logger = LoggerFactory.getLogger(AssistentController.class);
-    private static GoogleAuthenticationConfig auth;
-
-    @Autowired
-    private void context(GoogleAuthenticationConfig auth) { this.auth = auth; }
 
     public static Credentials getGoogleCredentials() throws Exception {
 

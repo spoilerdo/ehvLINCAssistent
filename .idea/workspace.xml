@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fb75899-e0ea-4b0f-9d32-6a5c7cbd2c9a" name="Default Changelist" comment="" />
+    <list default="true" id="1fb75899-e0ea-4b0f-9d32-6a5c7cbd2c9a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Implication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/AssistantApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/AssistantApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Domain/Entities/Flow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Domain/Entities/Flow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Static/GoogleAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Static/GoogleAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Flow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/GoogleAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/GoogleAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -10,6 +26,20 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -55,47 +85,48 @@
     <session id="-1260161165">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.2" value="7" />
+          <entry key="project.open.time.2" value="8" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.28" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.30" value="2" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gradle" value="4" />
-          <entry key="java" value="56" />
+          <entry key="gradle" value="5" />
+          <entry key="java" value="62" />
           <entry key="json" value="9" />
           <entry key="kt" value="1" />
-          <entry key="properties" value="5" />
+          <entry key="properties" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Groovy" value="4" />
-          <entry key="JAVA" value="56" />
+          <entry key="Groovy" value="5" />
+          <entry key="JAVA" value="62" />
           <entry key="JSON" value="9" />
           <entry key="Kotlin" value="1" />
-          <entry key="Properties" value="5" />
+          <entry key="Properties" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="19" />
-          <entry key="gradle" value="234" />
-          <entry key="java" value="9101" />
+          <entry key="gradle" value="246" />
+          <entry key="java" value="10721" />
           <entry key="properties" value="557" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Groovy" value="234" />
-          <entry key="JAVA" value="9101" />
+          <entry key="Groovy" value="246" />
+          <entry key="JAVA" value="10721" />
           <entry key="PLAIN_TEXT" value="19" />
           <entry key="Properties" value="557" />
         </counts>
@@ -103,14 +134,13 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+            <state relative-caret-position="204">
+              <caret line="44" column="136" lean-forward="true" selection-start-line="44" selection-start-column="136" selection-end-line="44" selection-end-column="136" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#listSessionEntityTypes#0;class#AssistentController#0" />
               </folding>
             </state>
@@ -118,48 +148,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/Enitities/AuthCredentials.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#697#698#0" expanded="true" />
-                <element signature="e#729#730#0" expanded="true" />
-                <element signature="e#768#769#0" expanded="true" />
-                <element signature="e#803#804#0" expanded="true" />
-                <element signature="e#840#841#0" expanded="true" />
-                <element signature="e#873#874#0" expanded="true" />
-                <element signature="e#911#912#0" expanded="true" />
-                <element signature="e#945#946#0" expanded="true" />
-                <element signature="e#980#981#0" expanded="true" />
-                <element signature="e#1011#1012#0" expanded="true" />
-                <element signature="e#1051#1052#0" expanded="true" />
-                <element signature="e#1087#1088#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/GoogleAuthentication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/AssistantApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -181,6 +173,7 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -375,7 +368,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6242677058498" />
+        <entry key="$PROJECT_DIR$" value="6244050471474" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="2517004380" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2585518924" />
@@ -594,7 +587,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Utils/ErrorDetails.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Module.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Node.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Flow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/KeyValueData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Data/repositories/IModuleRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Exceptions/ModuleNotFoundException.java" />
@@ -605,13 +597,15 @@
         <option value="$PROJECT_DIR$/ehvlincassistent-91f2d867338e.json" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationPropertiesss.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationProperties.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/Enitities/AuthCredentials.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/AssistantApplication.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/GoogleAuthentication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Implication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Flow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.java" />
       </list>
     </option>
   </component>
@@ -622,17 +616,45 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="316" />
-    <option name="y" value="156" />
+    <option name="x" value="436" />
+    <option name="y" value="481" />
     <option name="width" value="1340" />
-    <option name="height" value="485" />
+    <option name="height" value="505" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Production'; set:Production; class com.intellij.psi.search.scope.ProjectProductionScope">
+          <expand>
+            <path>
+              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com/ehvlinc/assistantservice" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -717,6 +739,17 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ehvlinc" type="462c0819:PsiDirectoryNode" />
               <item name="assistantservice" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ehv-assistent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ehv-assistent" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ehvlinc" type="462c0819:PsiDirectoryNode" />
+              <item name="assistantservice" type="462c0819:PsiDirectoryNode" />
               <item name="Static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -725,33 +758,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Production'; set:Production; class com.intellij.psi.search.scope.ProjectProductionScope">
-          <expand>
-            <path>
-              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com/ehvlinc/assistantservice" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ehv-assistent" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ehv-assistent/ehv-assistent_main" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -768,7 +774,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563463096660" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564836943035" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../_School/Semester4/Proftaak/Realisatie/s45servicediscoverer" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -860,12 +866,15 @@
       <workItem from="1561729877643" duration="4769000" />
       <workItem from="1562499215795" duration="2653000" />
       <workItem from="1563112416456" duration="5048000" />
-      <workItem from="1563459380058" duration="3698000" />
+      <workItem from="1563459380058" duration="3992000" />
+      <workItem from="1564383567304" duration="75000" />
+      <workItem from="1564833179429" duration="3905000" />
+      <workItem from="1564910090571" duration="5745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53653000" />
+    <option name="totallyTimeSpent" value="63672000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -880,7 +889,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23154363" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23489933" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -890,7 +899,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299566" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.39507958" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.37916064" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4674385" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -901,7 +910,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.39507958" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32850942" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.32850942" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -910,10 +919,11 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="right" id="Gradle" order="6" weight="0.3295302" />
-      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Database" order="7" weight="0.3295302" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Bean Validation" order="10" />
+      <window_info anchor="right" id="Mongo Explorer" order="11" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="0" />
@@ -1001,34 +1011,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.30.0-alpha/cab625edd9d6b0cd031aaa0590b77684a7a09b61/google-cloud-dialogflow-0.30.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-475">
-          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.api/gax/1.35.1/425203bb6497a6d9f98b70e0e465141c3449921e/gax-1.35.1-sources.jar!/com/google/api/gax/rpc/ClientContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.30.0-alpha/cab625edd9d6b0cd031aaa0590b77684a7a09b61/google-cloud-dialogflow-0.30.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="343" column="27" selection-start-line="343" selection-start-column="27" selection-end-line="343" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-storage/1.79.0/22fcb210fb46eb5d1f6a9003ebd0bde157709d36/google-cloud-storage-1.79.0-sources.jar!/com/google/cloud/storage/Storage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.30.0-alpha/cab625edd9d6b0cd031aaa0590b77684a7a09b61/google-cloud-dialogflow-0.30.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesClient.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.api/gax/1.35.1/425203bb6497a6d9f98b70e0e465141c3449921e/gax-1.35.1-sources.jar!/com/google/api/gax/rpc/ClientContext.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.30.0-alpha/cab625edd9d6b0cd031aaa0590b77684a7a09b61/google-cloud-dialogflow-0.30.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesSettings.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-storage/1.79.0/22fcb210fb46eb5d1f6a9003ebd0bde157709d36/google-cloud-storage-1.79.0-sources.jar!/com/google/cloud/storage/Storage.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Data/repositories/IModuleRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1043,82 +1029,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="152" column="12" selection-start-line="152" selection-start-column="12" selection-end-line="152" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/stub/SessionEntityTypesStubSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.api/gax/1.46.1/8dbe9d30d110703c320b8b27b46acc7a3a62b06d/gax-1.46.1-sources.jar!/com/google/api/gax/rpc/ClientContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="146" column="46" selection-start-line="146" selection-start-column="46" selection-end-line="146" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="120" column="34" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/stub/GrpcSessionEntityTypesStub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.1.4.RELEASE/1c97085f1052ad3206bafd364eba572d9f7565c2/spring-web-5.1.4.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="197" selection-start-line="197" selection-end-line="197" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesSettings.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/stub/SessionEntityTypesStubSettings.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.api/gax/1.46.1/8dbe9d30d110703c320b8b27b46acc7a3a62b06d/gax-1.46.1-sources.jar!/com/google/api/gax/rpc/ClientContext.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/SessionEntityTypesClient.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.cloud/google-cloud-dialogflow/0.97.0-alpha/a8b62bc7a207188ca3b14661d2b4b185fd50dbd0/google-cloud-dialogflow-0.97.0-alpha-sources.jar!/com/google/cloud/dialogflow/v2beta1/stub/GrpcSessionEntityTypesStub.java" />
     <entry file="file://$PROJECT_DIR$/ehvlincassistent-91f2d867338e.json" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Services/Logic/AssistenService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -1150,24 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#listSessionEntityTypes#0;class#AssistentController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Flow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/ehvlincassistent-bbf84b54cf39.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1177,52 +1079,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/Enitities/AuthCredentials.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="374">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#768#769#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-            <element signature="e#911#912#0" expanded="true" />
-            <element signature="e#945#946#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
-            <element signature="e#1011#1012#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-            <element signature="e#1087#1088#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/AssistantApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationProperties.java">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="376">
+          <caret line="45" column="103" selection-start-line="45" selection-start-column="103" selection-end-line="45" selection-end-column="103" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationConfig.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Config/GoogleAuthentication/GoogleAuthenticationProperties.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Static/GoogleAuthentication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Implication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="31" lean-forward="true" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Domain/Entities/Flow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.1.4.RELEASE/1c97085f1052ad3206bafd364eba572d9f7565c2/spring-web-5.1.4.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1220">
+          <caret line="195" selection-start-line="195" selection-end-line="195" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ehvlinc/assistantservice/Web/Controllers/AssistentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="44" column="136" lean-forward="true" selection-start-line="44" selection-start-column="136" selection-end-line="44" selection-end-column="136" />
+          <folding>
+            <element signature="method#listSessionEntityTypes#0;class#AssistentController#0" />
           </folding>
         </state>
       </provider>

@@ -1,10 +1,13 @@
 package com.ehvlinc.assistantservice.Domain.Entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Flow {
     private int targetID;
     private String value;
-    private String implication;
-    private String implicationLevel;
+    private List<Implication> implications = new ArrayList<>();
+    private List<KeyValueData> lincData = new ArrayList<>();
 
     public Flow() {
     }
@@ -22,11 +25,11 @@ public class Flow {
         return value;
     }
 
-    public String getImplication() {
-        return implication;
+    public List<KeyValueData> getLincData() {
+        return lincData;
     }
 
-    public String getImplicationLevel() {
-        return implicationLevel;
+    public List<Implication> getImplications() {
+        return implications;
     }
 }
