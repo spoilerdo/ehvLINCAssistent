@@ -14,6 +14,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookRequest;
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookResponse;
 import com.google.cloud.dialogflow.v2.*;
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,21 +63,18 @@ public class AssistentController {
     @PostMapping(path = "/")
     public ResponseEntity<?> intentCall(@RequestBody String requestStr, HttpServletRequest servletRequest) throws IOException {
         GoogleCloudDialogflowV2WebhookRequest request = jacksonFactory.createJsonParser(requestStr).parse(GoogleCloudDialogflowV2WebhookRequest.class);
-        GoogleCloudDialogflowV2QueryResult test = request.getQueryResult();
-        String test2 = request.getQueryResult().getAction();
         switch (request.getQueryResult().getAction()){
             case "get_legal_subject":
-                return getSubject(requestStr, servletRequest);
+                return getSubject(request, servletRequest);
             case "get_first_question":
-                return getFirstQuestion(requestStr, servletRequest);
+                return getFirstQuestion(request, servletRequest);
             default:
                 return defaultReturn();
         }
     }
 
-    private ResponseEntity<?> getSubject(String requestStr, HttpServletRequest servletRequest) throws IOException {
+    private ResponseEntity<?> getSubject(GoogleCloudDialogflowV2WebhookRequest request, HttpServletRequest servletRequest) throws IOException {
         GoogleCloudDialogflowV2WebhookResponse response = new GoogleCloudDialogflowV2WebhookResponse();
-        GoogleCloudDialogflowV2WebhookRequest request = jacksonFactory.createJsonParser(requestStr).parse(GoogleCloudDialogflowV2WebhookRequest.class);
 
         Map<String, Object> params = request.getQueryResult().getParameters();
         if(params.size() > 0){
@@ -94,7 +92,6 @@ public class AssistentController {
 
             try{
                 createSessionEntityType(session.getParentID(), session.getSessionID(), testValues, "questionaire", SessionEntityType.EntityOverrideMode.ENTITY_OVERRIDE_MODE_OVERRIDE_VALUE);
-                //listSessionEntityTypes(session.getSessionID());
             }catch (Exception e){
                 logger.info(e.getMessage());
             }
@@ -108,17 +105,66 @@ public class AssistentController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    private ResponseEntity<?> getFirstQuestion(String requestStr, HttpServletRequest servletRequest) throws IOException {
+    private ResponseEntity<?> getFirstQuestion(GoogleCloudDialogflowV2WebhookRequest request, HttpServletRequest servletRequest) throws IOException {
         GoogleCloudDialogflowV2WebhookResponse response = new GoogleCloudDialogflowV2WebhookResponse();
-        GoogleCloudDialogflowV2WebhookRequest request = jacksonFactory.createJsonParser(requestStr).parse(GoogleCloudDialogflowV2WebhookRequest.class);
 
         Session session = new Session(request.getSession());
         try{
-            listSessionEntityTypes(session.getSessionID(), session.getParentID());
+            List<SessionEntityType> entityTypes = listSessionEntityTypes(session.getSessionID(), session.getParentID());
+            logger.info("name: " + entityTypes.get(0).getName());
+            SessionEntityType questionnaire = entityTypes.stream()
+                    .filter(entity -> entity.getName().contains("questionaire"))
+                    .findFirst()
+                    .orElse(null);
+            if(questionnaire == null){
+                response.setFulfillmentText("I lost the questionnaire between my paperwork. Can we start over... what was your name again?");
+            } else{
+                //Get the first question
+                EntityType.Entity firstQuestion = null;
+                int index = 0;
+                while (firstQuestion == null){
+                    //TODO: change this if statement to look for the firstquestion or maybe the startnode or something
+                    logger.info(questionnaire.getEntities(index).getValue());
+                    if(questionnaire.getEntities(index).getValue().contains("F")){
+                        firstQuestion = questionnaire.getEntities(index);
+                    } else {
+                        index ++;
+                    }
+                }
+
+                response.setFulfillmentText("First question: " + firstQuestion.getValue());
+            }
         }catch (Exception e){
             logger.info(e.getMessage());
         }
 
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    /**
+     * Gets the current question by getting the targetId from the parameter.
+     * TODO: With the multichoice question this will become a bit harder because you will get a list of questions that needs to be asked
+     * @param request request from the Dialogflow POST call
+     * @param servletRequest HttpServletRequest of the POST call
+     * @return a question (node) that is the next question in the questionnaire
+     * @throws IOException if it can't find the dedicated entityType (questionnaire)
+     */
+    private ResponseEntity<?> getCurrentQuestion(GoogleCloudDialogflowV2WebhookRequest request, HttpServletRequest servletRequest) throws IOException {
+        GoogleCloudDialogflowV2WebhookResponse response = new GoogleCloudDialogflowV2WebhookResponse();
+
+        Map<String, Object> params = request.getQueryResult().getParameters();
+        if(params.size() > 0){
+            String subject = params.get("target_id").toString();
+        }
+
+        Session session = new Session(request.getSession());
+        try{
+            List<SessionEntityType> entityTypes = listSessionEntityTypes(session.getSessionID(), session.getParentID());
+        }catch (Exception e){
+            logger.info(e.getMessage());
+        }
+
+        //TODO: change to correct return
         return defaultReturn();
     }
 
@@ -128,27 +174,19 @@ public class AssistentController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    private void listSessionEntityTypes(String sessionId, String projectId) throws Exception {
+    private List<SessionEntityType> listSessionEntityTypes(String sessionId, String projectId) throws Exception {
 
         SessionEntityTypesSettings sessionEntityTypesSettings = SessionEntityTypesSettings.newBuilder()
                 .setCredentialsProvider(FixedCredentialsProvider.create(GoogleAuthentication.getGoogleCredentials())).build();
 
         // Instantiates a client
         try (SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.create(sessionEntityTypesSettings)) {
-
-            //SessionEntityTypeName name = SessionEntityTypeName.of(projectId, sessionId, "[ENTITY_TYPE]");
-            //SessionEntityType response = sessionEntityTypesClient.getSessionEntityType(name);
-
             // Set the session name using the sessionId (UUID) and projectID (my-project-id)
             SessionName session = SessionName.of(projectId, sessionId);
-
             System.out.format("SessionEntityTypes for session %s:\n", session.toString());
-            // Performs the list session entity types request
-            for (SessionEntityType sessionEntityType :
-                    sessionEntityTypesClient.listSessionEntityTypes(session).iterateAll()) {
-                System.out.format("\tSessionEntityType name: %s\n", sessionEntityType.getName());
-                System.out.format("\tNumber of entities: %d\n", sessionEntityType.getEntitiesCount());
-            }
+
+            //returns a list of SessionEntityTypes
+            return Lists.newArrayList(sessionEntityTypesClient.listSessionEntityTypes(session).iterateAll());
         }
     }
 
