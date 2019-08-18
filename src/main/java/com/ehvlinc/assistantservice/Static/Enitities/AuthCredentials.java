@@ -1,6 +1,6 @@
 package com.ehvlinc.assistantservice.Static.Enitities;
 
-import org.json.simple.JSONObject;
+import com.google.gson.JsonObject;
 
 public class AuthCredentials {
     private String projectId;
@@ -19,13 +19,13 @@ public class AuthCredentials {
         this.tokeServerUri = tokeServerUri;
     }
 
-    public AuthCredentials(JSONObject credentialFile) {
-        projectId = (String) credentialFile.get("project_id");
-        privateKeyId = (String) credentialFile.get("private_key_id");
-        privateKey = (String) credentialFile.get("private_key");
-        clientEmail = (String) credentialFile.get("client_email");
-        clientId = (String) credentialFile.get("client_id");
-        tokeServerUri = (String) credentialFile.get("token_uri");
+    public AuthCredentials(JsonObject credentialFile) {
+        projectId = credentialFile.get("project_id").getAsString();
+        privateKeyId = credentialFile.get("private_key_id").getAsString();
+        privateKey = credentialFile.get("private_key").getAsString();
+        clientEmail = credentialFile.get("client_email").getAsString();
+        clientId = credentialFile.get("client_id").getAsString();
+        tokeServerUri = credentialFile.get("token_uri").getAsString();
     }
 
     public String getProjectId() {

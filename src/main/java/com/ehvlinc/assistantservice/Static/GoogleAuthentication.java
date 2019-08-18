@@ -4,11 +4,10 @@ import com.ehvlinc.assistantservice.Static.Enitities.AuthCredentials;
 import com.ehvlinc.assistantservice.Web.Controllers.AssistentController;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.ServiceAccountCredentials;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileReader;
@@ -41,8 +40,8 @@ public class GoogleAuthentication {
 
     public static Credentials getGoogleCredentials() throws Exception {
 
-        JSONParser parser = new JSONParser();
-        AuthCredentials credentials = new AuthCredentials((JSONObject) parser.parse(
+        JsonParser parser = new JsonParser();
+        AuthCredentials credentials = new AuthCredentials((JsonObject) parser.parse(
                 new FileReader(GoogleAuthentication.class.getClassLoader().getResource("ehvlincassistent-bbf84b54cf39.json").getFile())
         ));
 

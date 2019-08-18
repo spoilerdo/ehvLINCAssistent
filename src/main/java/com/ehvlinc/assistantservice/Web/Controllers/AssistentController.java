@@ -1,6 +1,7 @@
 package com.ehvlinc.assistantservice.Web.Controllers;
 
 import com.ehvlinc.assistantservice.Domain.Entities.Module;
+import com.ehvlinc.assistantservice.Domain.Entities.Node;
 import com.ehvlinc.assistantservice.Domain.Entities.Session;
 import com.ehvlinc.assistantservice.Services.Interfaces.IAssistentService;
 import com.ehvlinc.assistantservice.Static.GoogleAuthentication;
@@ -15,6 +16,12 @@ import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2Webhoo
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookResponse;
 import com.google.cloud.dialogflow.v2.*;
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +63,7 @@ public class AssistentController {
     Logger logger = LoggerFactory.getLogger(AssistentController.class);
 
     private static JacksonFactory jacksonFactory = JacksonFactory.getDefaultInstance();
+    private Gson g = new Gson();
 
     @Autowired
     public AssistentController(IAssistentService assistentService){ this.assistentService = assistentService; }
@@ -79,19 +87,15 @@ public class AssistentController {
         Map<String, Object> params = request.getQueryResult().getParameters();
         if(params.size() > 0){
             String subject = params.get("legal_subject").toString();
-            //Module foundModule = assistentService.getModuleByName(subject);
+            Module foundModule = assistentService.getModuleByName(subject);
+            JsonArray nodes = g.toJsonTree(foundModule.getNodes(), new TypeToken<List<Node>>() {}.getType()).getAsJsonArray();
 
             Session session = new Session(request.getSession());
-
             logger.info(session.getParentID());
             logger.info(session.getSessionID());
 
-            List<String> testValues = new ArrayList<>();
-            testValues.add("First test");
-            testValues.add("Second test");
-
             try{
-                createSessionEntityType(session.getParentID(), session.getSessionID(), testValues, "questionaire", SessionEntityType.EntityOverrideMode.ENTITY_OVERRIDE_MODE_OVERRIDE_VALUE);
+                createSessionEntityType(session.getParentID(), session.getSessionID(), nodes, "questionaire", SessionEntityType.EntityOverrideMode.ENTITY_OVERRIDE_MODE_OVERRIDE_VALUE);
             }catch (Exception e){
                 logger.info(e.getMessage());
             }
@@ -191,7 +195,7 @@ public class AssistentController {
     }
 
     private void createSessionEntityType(String projectId, String sessionId,
-                                               List<String> entityValues, String entityTypeDisplayName,int entityOverrideMode)
+                                         JsonArray entityValues, String entityTypeDisplayName, int entityOverrideMode)
            throws Exception {
 
         SessionEntityTypesSettings sessionEntityTypesSettings = SessionEntityTypesSettings.newBuilder()
@@ -208,10 +212,10 @@ public class AssistentController {
                     entityTypeDisplayName);
 
             List<EntityType.Entity> entities = new ArrayList<>();
-            for (String entityValue : entityValues) {
+            for (int i = 0; i < entityValues.size(); i++){
                 entities.add(EntityType.Entity.newBuilder()
-                        .setValue(entityValue)
-                        .addSynonyms(entityValue)
+                        .setValue(entityValues.get(i).toString())
+                        .addSynonyms(entityValues.get(i).toString())
                         .build());
             }
 
