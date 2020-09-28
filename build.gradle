@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.5.RELEASE'
+        springBootVersion = '2.3.1.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -11,47 +11,49 @@ buildscript {
 }
 
 plugins {
-    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
 }
 
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+group = 'nl.suitless.assistantservice'
+version = '0.0.1-SNAPSHOT'
+
 bootJar {
-    baseName = 'com.ehvlinc.assistantservice'
+    baseName = 'nl.suitless.assistantservice'
     version = '0.0.1-SNAPSHOT'
 }
 
-sourceCompatibility = 1.8
+bootRun {
+    systemProperties['spring.profiles.active']=project.gradle.startParameter.systemPropertiesArgs['spring.profiles.active'];
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
     mavenCentral()
 }
 
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE'
-    }
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    implementation 'io.springfox:springfox-swagger2:2.9.2'
-    implementation "org.springframework.boot:spring-boot-configuration-processor"
-    implementation 'org.json:json:20180813'
-    implementation 'com.googlecode.json-simple:json-simple:version:1.1.1'
-    implementation 'com.google.guava:guava:28.0-jre'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
     implementation 'org.modelmapper:modelmapper:2.3.5'
 
-    implementation 'com.google.apis:google-api-services-dialogflow:v2-rev81-1.25.0'
-    implementation 'com.google.cloud:google-cloud-dialogflow:0.106.0-alpha'
+    implementation group: 'com.google.cloud', name: 'google-cloud-dialogflow', version: '2.3.0'
+    implementation group: 'com.google.apis', name: 'google-api-services-dialogflow', version: 'v2-rev124-1.25.0'
 
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    runtime('mysql:mysql-connector-java')
     testImplementation 'com.h2database:h2'
 }
