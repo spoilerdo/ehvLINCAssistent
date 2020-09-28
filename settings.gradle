@@ -1,2 +1,6 @@
-rootProject.name = 'ehv-assistent'
-
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'assitantservice'
