@@ -30,20 +30,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.*;
 
-/**
- * TODO:
- * Wanneer de user zegt ready vraag de eerste vraag.
- * Dan zijn er drie intents positive, negative and misc.
- * Die alledrie getriggred kunnen worden wanneer je antwoord op de vraag.
- * Deze drie intents zorgen ervoor dat de correcte volgende vraag wordt gesteld.
- * Je kan ook nog bij elke vraag de antwoorden in een van de drie intents zetten, maar dan moet je dus een soort algoritmen maken
- * Die kijkt in welke categorie de zin hoort, dat is misschien te lastig.
- * De misc is een fallback. Maar als een vraag niet een derde antwoord bevat dan moet hij dus terug sturen dat hij het niet had begrepen
- *
- * De multi choice is een andere kwestie. Als deze voorkomt dan moet je een opsomming opnemen en als een lijst terug sturen.
- * Dit kan dus een vierde optie zijn maar dat komt later wel.
- */
-
 @RestController
 public class AssistantController {
     private IAssistantService assistantService;
@@ -75,6 +61,7 @@ public class AssistantController {
         }
     }
 
+    // gets the module
     private ResponseEntity<?> getSubject(GoogleCloudDialogflowV2WebhookRequest request, HttpServletRequest servletRequest) throws IOException {
         GoogleCloudDialogflowV2WebhookResponse response = new GoogleCloudDialogflowV2WebhookResponse();
 
@@ -97,7 +84,7 @@ public class AssistantController {
             response.setFulfillmentText(subject + " is a great subject to talk about let me get the survey and if you are ready we can start the conversation.");
         }else{
             logger.info("no parameters found");
-            response.setFulfillmentText("I don't have a questionnaire for that subject. Maybe I didn't hear it right?");
+            response.setFulfillmentText("I don't have a questionnaire for that subject yet or I just couldn't hear you, say it again?");
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
