@@ -1,20 +1,20 @@
 package nl.suitless.assistantservice.Domain.Entities;
 
 public class Session {
-    private String parentID;
-    private String sessionID;
+    private String parentId;
+    private String sessionId;
 
     public Session(String session){
         String[] values = session.split("/");
-        parentID = values[1];
-        sessionID = values[4];
+        parentId = values[1];
+        sessionId = values[4];
     }
 
-    public String getParentID() {
-        return parentID;
+    public String getParentId() {
+        return parentId;
     }
 
-    public String getSessionID() {
-        return sessionID;
+    public String getSessionId() {
+        return sessionId;
     }
 }

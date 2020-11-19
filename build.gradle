@@ -48,6 +48,7 @@ dependencies {
 
     implementation group: 'com.google.cloud', name: 'google-cloud-dialogflow', version: '2.3.0'
     implementation group: 'com.google.apis', name: 'google-api-services-dialogflow', version: 'v2-rev124-1.25.0'
+    implementation group: 'com.google.api-client', name: 'google-api-client-jackson2', version: '1.31.1'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'

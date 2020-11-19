@@ -6,7 +6,7 @@ import nl.suitless.assistantservice.Domain.Entities.Module;
 import nl.suitless.assistantservice.Domain.Entities.Node;
 import nl.suitless.assistantservice.Domain.Entities.Session;
 import nl.suitless.assistantservice.Domain.Enums.NodeStyles;
-import nl.suitless.assistantservice.Services.Interfaces.IAssistantService;
+import nl.suitless.assistantservice.Services.Interfaces.IOLDAssistantService;
 import nl.suitless.assistantservice.Static.GoogleAuthentication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.gax.core.FixedCredentialsProvider;
@@ -30,19 +30,21 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.*;
 
+//TODO make this the translator of the system so you get a question of suitless and send back an answer by the assistant input
+// DEPRECATED!!!!!
 @RestController
-public class AssistantController {
-    private IAssistantService assistantService;
+public class OLDAssistantController {
+    private IOLDAssistantService assistantService;
 
     private final ModelMapper modelMapper;
     private final Gson g;
 
-    Logger logger = LoggerFactory.getLogger(AssistantController.class);
+    Logger logger = LoggerFactory.getLogger(OLDAssistantController.class);
 
     private static JacksonFactory jacksonFactory = JacksonFactory.getDefaultInstance();
 
     @Autowired
-    public AssistantController(IAssistantService assistantService, ModelMapper modelMapper, Gson gson){
+    public OLDAssistantController(IOLDAssistantService assistantService, ModelMapper modelMapper, Gson gson){
         this.assistantService = assistantService;
         this.modelMapper = modelMapper;
         this.g = gson;
@@ -72,11 +74,11 @@ public class AssistantController {
             JsonArray nodes = g.toJsonTree(foundModule.getNodes(), new TypeToken<List<Node>>() {}.getType()).getAsJsonArray();
 
             Session session = new Session(request.getSession());
-            logger.info(session.getParentID());
-            logger.info(session.getSessionID());
+            logger.info(session.getParentId());
+            logger.info(session.getSessionId());
 
             try{
-                createSessionEntityType(session.getParentID(), session.getSessionID(), nodes, "questionnaire", SessionEntityType.EntityOverrideMode.ENTITY_OVERRIDE_MODE_OVERRIDE_VALUE);
+                createSessionEntityType(session.getParentId(), session.getSessionId(), nodes, "questionnaire", SessionEntityType.EntityOverrideMode.ENTITY_OVERRIDE_MODE_OVERRIDE_VALUE);
             }catch (Exception e){
                 logger.info(e.getMessage());
             }
@@ -95,7 +97,7 @@ public class AssistantController {
 
         Session session = new Session(request.getSession());
         try{
-            List<SessionEntityType> entityTypes = listSessionEntityTypes(session.getSessionID(), session.getParentID());
+            List<SessionEntityType> entityTypes = listSessionEntityTypes(session.getSessionId(), session.getParentId());
             logger.info("name: " + entityTypes.get(0).getName());
             SessionEntityType questionnaire = entityTypes.stream()
                     .filter(entity -> entity.getName().contains("questionnaire"))
@@ -152,7 +154,7 @@ public class AssistantController {
 
         Session session = new Session(request.getSession());
         try{
-            List<SessionEntityType> entityTypes = listSessionEntityTypes(session.getSessionID(), session.getParentID());
+            List<SessionEntityType> entityTypes = listSessionEntityTypes(session.getSessionId(), session.getParentId());
         }catch (Exception e){
             logger.info(e.getMessage());
         }

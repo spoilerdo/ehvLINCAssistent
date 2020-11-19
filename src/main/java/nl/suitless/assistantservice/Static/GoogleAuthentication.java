@@ -1,7 +1,7 @@
 package nl.suitless.assistantservice.Static;
 
 import nl.suitless.assistantservice.Static.Enitities.AuthCredentials;
-import nl.suitless.assistantservice.Web.Controllers.AssistantController;
+import nl.suitless.assistantservice.Web.Controllers.OLDAssistantController;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.gson.JsonObject;
@@ -36,7 +36,7 @@ import java.util.Base64;
 @Service
 public class GoogleAuthentication {
 
-    static Logger logger = LoggerFactory.getLogger(AssistantController.class);
+    static Logger logger = LoggerFactory.getLogger(OLDAssistantController.class);
 
     public static Credentials getGoogleCredentials() throws Exception {
 
