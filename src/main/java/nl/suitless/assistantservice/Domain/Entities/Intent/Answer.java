@@ -1,20 +1,14 @@
 package nl.suitless.assistantservice.Domain.Entities.Intent;
 
+import java.util.List;
+
 public class Answer {
-    private int id;
     private String text;
+    private List<String> responses;
 
-    public Answer(int id, String text) {
-        this.id = id;
+    public Answer(String text, List<String> responses) {
         this.text = text;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.responses = responses;
     }
 
     public String getText() {
@@ -23,5 +17,13 @@ public class Answer {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public List<String> getResponses() {
+        return responses;
+    }
+
+    public void setResponses(List<String> responses) {
+        this.responses = responses;
     }
 }

@@ -1,6 +1,7 @@
 package nl.suitless.assistantservice.Services.Interfaces;
 
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookRequest;
+import com.google.cloud.dialogflow.v2.Intent;
 import nl.suitless.assistantservice.Domain.Entities.Intent.Answer;
 import nl.suitless.assistantservice.Domain.Entities.Intent.IntentRespond;
 
@@ -21,6 +22,22 @@ import java.util.List;
  * @since 18-11-2020
  */
 public interface IAssistantService {
+    /**
+     * You found the module within the already existing intents start this intent by calling its custom event
+     * @param module name of the module you want to start
+     */
+    void startModule(String module, GoogleCloudDialogflowV2WebhookRequest request);
+
+    /**
+     * No existing intent array exists for the chose module,
+     * make a new array and populate it with the necessary intents to start the module
+     * @param module needed to populate the new array
+     * @param question first question to ask
+     * @param answers follow up intents that the user can possible answer
+     * @param request needed to make the Dialogflow connection
+     */
+    void populateModuleIntentArray(Module module, String question, List<Answer> answers, GoogleCloudDialogflowV2WebhookRequest request);
+
     /**
      * The assistant determined that the user wants to go to the next question.
      * Retrieve the answer and return its id.
@@ -46,11 +63,13 @@ public interface IAssistantService {
 
     /**
      * Create an intent (usually used to create new answers)
-     * @param text training phrase you want to add to the intent
+     * @param name of the new intent
+     * @param trainingPhraseParts training phrases to be added (usually the answers of the question)
      * @param response message you want to trigger
+     * @param intentParentId id of the intent parent (used to make follow up intents)
      * @param projectId needed to make the dialogflow connection
      */
-    void createIntent(String text, String response, String projectId);
+    Intent createIntent(String name, String[] trainingPhraseParts, String response, String intentParentId, String projectId);
 
     /**
      * The assistant determined that the user wants to go back.

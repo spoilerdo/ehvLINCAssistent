@@ -2,25 +2,51 @@ package nl.suitless.assistantservice.Services.Logic;
 
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookRequest;
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookResponse;
-import com.google.cloud.dialogflow.v2.Intent;
-import com.google.cloud.dialogflow.v2.IntentName;
-import com.google.cloud.dialogflow.v2.IntentsClient;
-import com.google.cloud.dialogflow.v2.ProjectAgentName;
+import com.google.cloud.dialogflow.v2.*;
 import nl.suitless.assistantservice.Domain.Entities.Intent.Action;
 import nl.suitless.assistantservice.Domain.Entities.Intent.Answer;
 import nl.suitless.assistantservice.Domain.Entities.Intent.IntentRespond;
 import nl.suitless.assistantservice.Domain.Entities.Session;
 import nl.suitless.assistantservice.Services.Interfaces.IAssistantService;
-import nl.suitless.assistantservice.Web.Controllers.OLDAssistantController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class AssistantService implements IAssistantService {
     Logger logger = LoggerFactory.getLogger(AssistantService.class);
+
+    @Override
+    public void startModule(String module, GoogleCloudDialogflowV2WebhookRequest request) {
+        try(SessionsClient sessionsClient = SessionsClient.create()) {
+            Session session = new Session(request.getSession());
+            sessionsClient.detectIntent(String.valueOf(session),
+                    QueryInput.newBuilder().setEvent(
+                            EventInput.newBuilder().setName(module).build()).build());
+        } catch (IOException e) {
+            // TODO: do something
+        }
+    }
+
+    // STEP1:  DONE!!!
+    @Override
+    public void populateModuleIntentArray(Module module, String question, List<Answer> answers, GoogleCloudDialogflowV2WebhookRequest request) {
+        // Start of by making the first intent that will give information about the module
+        Session session = new Session(request.getSession());
+
+        // First intent doesn't have any training phrases but does have a response (the first question)
+        Intent firstIntent = createIntent(module.getName(), null, question, null, session.getParentId());
+
+        // Now create the first follow intents (containing possible answers of the first question with the follow up question)
+        answers.forEach(ans -> {
+            // TODO: make responses array when notification/ implications are being implemented
+            createIntent(ans.getText(), new String [] {ans.getText()}, ans.getResponses().get(0), firstIntent.getName(), session.getParentId());
+        });
+    }
 
     @Override
     public IntentRespond goForward(List<String> givenAnswersIds) {
@@ -53,19 +79,22 @@ public class AssistantService implements IAssistantService {
     }
 
     @Override
-    public void createIntent(String text, String response, String projectId) {
+    public Intent createIntent(String name, String[] trainingPhraseParts, String response, String intentParentId, String projectId) {
         // Instantiates a client
         try(IntentsClient intentsClient = IntentsClient.create()) {
             // Set the project agent name using the project id
             ProjectAgentName parent = ProjectAgentName.of(projectId);
 
             // Build the trainingPhrases
-            Intent.TrainingPhrase trainingPhrase =
-                Intent.TrainingPhrase.newBuilder().addParts(
-                        Intent.TrainingPhrase.Part.newBuilder().setText(text).build()
-                ).build();
+            List<Intent.TrainingPhrase> trainingPhrases = new ArrayList<>();
+            for (String trainingPhrase : trainingPhraseParts) {
+                trainingPhrases.add(
+                        Intent.TrainingPhrase.newBuilder().addParts(
+                                Intent.TrainingPhrase.Part.newBuilder().setText(trainingPhrase).build())
+                                .build());
+            }
 
-            // Build the message texts for the agent's response (TODO: this can be the next question)
+            // Build the message texts for the agent's response (TODO: this can be a notification/ implication or next question)
             Intent.Message message = Intent.Message.newBuilder()
                     .setText(
                             Intent.Message.Text.newBuilder().addText(response).build()
@@ -73,14 +102,16 @@ public class AssistantService implements IAssistantService {
 
             // Build the intent
             Intent intent = Intent.newBuilder()
-                    .setDisplayName(response)
+                    .setParentFollowupIntentName("projects/" + projectId + "/agent/intents/" + intentParentId)
+                    .setDisplayName(name)
                     .addMessages(message)
-                    .addTrainingPhrases(trainingPhrase).build();
+                    .addAllTrainingPhrases(trainingPhrases).build();
 
             // Perform the create intent request
-            intentsClient.createIntent(String.valueOf(parent), intent);
+            return intentsClient.createIntent(String.valueOf(parent), intent);
         } catch (IOException e) {
             // TODO: do something
+            return null;
         }
     }
 
