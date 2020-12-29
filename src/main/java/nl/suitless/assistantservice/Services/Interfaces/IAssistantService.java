@@ -23,12 +23,6 @@ import java.util.List;
  */
 public interface IAssistantService {
     /**
-     * You found the module within the already existing intents start this intent by calling its custom event
-     * @param module name of the module you want to start
-     */
-    void startModule(String module, GoogleCloudDialogflowV2WebhookRequest request);
-
-    /**
      * No existing intent array exists for the chose module,
      * make a new array and populate it with the necessary intents to start the module
      * @param module needed to populate the new array
@@ -36,7 +30,7 @@ public interface IAssistantService {
      * @param answers follow up intents that the user can possible answer
      * @param request needed to make the Dialogflow connection
      */
-    void populateModuleIntentArray(Module module, String question, List<Answer> answers, GoogleCloudDialogflowV2WebhookRequest request);
+    void startModule(Module module, String question, List<Answer> answers, GoogleCloudDialogflowV2WebhookRequest request);
 
     /**
      * The assistant determined that the user wants to go to the next question.
@@ -47,12 +41,19 @@ public interface IAssistantService {
     IntentRespond goForward(List<String> givenAnswerIds);
 
     /**
+     * The assistant determined that the user wants to go back.
+     * @return Intent respond with a given action (back)
+     */
+    IntentRespond goBack();
+
+    /**
      * Create the intents for every answer of the current question
      * This will be called after the module editor has the next question
+     * @param parentIntent the parent intent the intents are bound to (as children)
      * @param possibleAnswers list of answers that the user can chose from
      * @param request needed to make the dialogflow connection
      */
-    void createQuestionIntents(List<Answer> possibleAnswers, GoogleCloudDialogflowV2WebhookRequest request);
+    void createQuestion(Intent parentIntent, List<Answer> possibleAnswers, GoogleCloudDialogflowV2WebhookRequest request);
 
     /**
      * Deletes an intent (usually used to delete answers already answered)
@@ -70,10 +71,4 @@ public interface IAssistantService {
      * @param projectId needed to make the dialogflow connection
      */
     Intent createIntent(String name, String[] trainingPhraseParts, String response, String intentParentId, String projectId);
-
-    /**
-     * The assistant determined that the user wants to go back.
-     * @return Intent respond with a given action (back)
-     */
-    IntentRespond goBack();
 }

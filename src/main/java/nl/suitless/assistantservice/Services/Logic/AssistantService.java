@@ -21,20 +21,7 @@ public class AssistantService implements IAssistantService {
     Logger logger = LoggerFactory.getLogger(AssistantService.class);
 
     @Override
-    public void startModule(String module, GoogleCloudDialogflowV2WebhookRequest request) {
-        try(SessionsClient sessionsClient = SessionsClient.create()) {
-            Session session = new Session(request.getSession());
-            sessionsClient.detectIntent(String.valueOf(session),
-                    QueryInput.newBuilder().setEvent(
-                            EventInput.newBuilder().setName(module).build()).build());
-        } catch (IOException e) {
-            // TODO: do something
-        }
-    }
-
-    // STEP1:  DONE!!!
-    @Override
-    public void populateModuleIntentArray(Module module, String question, List<Answer> answers, GoogleCloudDialogflowV2WebhookRequest request) {
+    public void startModule(Module module, String question, List<Answer> answers, GoogleCloudDialogflowV2WebhookRequest request) {
         // Start of by making the first intent that will give information about the module
         Session session = new Session(request.getSession());
 
@@ -44,25 +31,33 @@ public class AssistantService implements IAssistantService {
         // Now create the first follow intents (containing possible answers of the first question with the follow up question)
         answers.forEach(ans -> {
             // TODO: make responses array when notification/ implications are being implemented
+            // Response == follow up question for now
             createIntent(ans.getText(), new String [] {ans.getText()}, ans.getResponses().get(0), firstIntent.getName(), session.getParentId());
         });
     }
 
     @Override
     public IntentRespond goForward(List<String> givenAnswersIds) {
+        // TODO: add create question
         return new IntentRespond(Action.FORWARD, (Integer[]) givenAnswersIds.toArray());
     }
 
     @Override
-    public void createQuestionIntents(List<Answer> possibleAnswers, GoogleCloudDialogflowV2WebhookRequest request) {
+    public IntentRespond goBack() {
+        return new IntentRespond(Action.BACK);
+    }
+
+    @Override
+    public void createQuestion(Intent parentIntent, List<Answer> possibleAnswers, GoogleCloudDialogflowV2WebhookRequest request) {
         // Get session
         Session session = new Session(request.getSession());
         logger.info(session.getParentId());
         logger.info(session.getSessionId());
 
-        // Create the new ones
+        // Create new follow up intents
         possibleAnswers.forEach(ans -> {
-            createIntent(ans.getText(), "get_answer_" + ans.getId(), session.getParentId());
+            // Response == follow up question for now
+            createIntent(ans.getText(), new String [] {ans.getText()}, ans.getResponses().get(0), parentIntent.getName(), session.getParentId());
         });
     }
 
@@ -113,10 +108,5 @@ public class AssistantService implements IAssistantService {
             // TODO: do something
             return null;
         }
-    }
-
-    @Override
-    public IntentRespond goBack() {
-        return new IntentRespond(Action.BACK);
     }
 }
