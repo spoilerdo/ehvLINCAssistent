@@ -1,7 +1,6 @@
 package nl.suitless.assistantservice.Services.Logic;
 
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookRequest;
-import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookResponse;
 import com.google.cloud.dialogflow.v2.*;
 import nl.suitless.assistantservice.Domain.Entities.Intent.Action;
 import nl.suitless.assistantservice.Domain.Entities.Intent.Answer;

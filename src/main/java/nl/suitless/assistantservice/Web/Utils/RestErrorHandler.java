@@ -1,6 +1,6 @@
 package nl.suitless.assistantservice.Web.Utils;
 
-import nl.suitless.assistantservice.Exceptions.ModuleNotFoundException;
+import nl.suitless.assistantservice.Domain.Exceptions.ModuleNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

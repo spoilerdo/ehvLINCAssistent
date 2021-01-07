@@ -1,4 +1,4 @@
-package nl.suitless.assistantservice.Exceptions;
+package nl.suitless.assistantservice.Domain.Exceptions;
 
 /**
  * Custom exception for when a module could not be found within the system (credits to Nick van der Burgt).

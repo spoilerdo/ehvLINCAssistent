@@ -1,0 +1,11 @@
+server:
+  port: 3306
+
+app:
+  security:
+    basic:
+      enabled: true
+
+spring:
+  application:
+    name: assistant-service

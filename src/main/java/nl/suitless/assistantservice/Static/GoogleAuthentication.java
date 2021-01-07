@@ -1,11 +1,11 @@
 package nl.suitless.assistantservice.Static;
 
 import nl.suitless.assistantservice.Static.Enitities.AuthCredentials;
-import nl.suitless.assistantservice.Web.Controllers.OLDAssistantController;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import nl.suitless.assistantservice.Web.Controllers.AssistantController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import java.util.Base64;
 
 /**
  * Static class that tries to connect with a google project.
- * You will need to give it some project information in the application.properties file:
+ * You will need to give it some project information in the application-local.yml file:
  * - projectId
  * - privateKeyId
  * - privateKey
@@ -36,7 +36,7 @@ import java.util.Base64;
 @Service
 public class GoogleAuthentication {
 
-    static Logger logger = LoggerFactory.getLogger(OLDAssistantController.class);
+    static Logger logger = LoggerFactory.getLogger(AssistantController.class);
 
     public static Credentials getGoogleCredentials() throws Exception {
 
@@ -45,7 +45,7 @@ public class GoogleAuthentication {
                 new FileReader(GoogleAuthentication.class.getClassLoader().getResource("ehvlincassistent-bbf84b54cf39.json").getFile())
         ));
 
-        //These are the properties gain from the application.properties file
+        //These are the properties gain from the application-local.yml file
         String projectId = credentials.getProjectId();
         String privateKeyId = credentials.getPrivateKeyId();
         String privateKey = credentials.getPrivateKey();

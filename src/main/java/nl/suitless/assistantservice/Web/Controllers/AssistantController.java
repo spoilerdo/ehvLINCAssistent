@@ -7,11 +7,11 @@ import nl.suitless.assistantservice.Web.Wrappers.StartModuleWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -36,8 +36,17 @@ public class AssistantController {
      * @throws IOException
      */
     @PostMapping(path = "/")
+    @SendTo("/intent")
     public ResponseEntity<?> intentCall(@RequestBody String requestStr, HttpServletRequest servletRequest) throws IOException {
         GoogleCloudDialogflowV2WebhookRequest request = jacksonFactory.createJsonParser(requestStr).parse(GoogleCloudDialogflowV2WebhookRequest.class);
+
+        var intent = request.getQueryResult().getIntent();
+        if (intent.getName().contains("back")) {
+            // tell the Suitless engine to go back
+        } else {
+            // an intent has been called and it is not the go back intent so lets go forward.
+            // get the answer text but i need to return the answer id
+        }
 
         // TODO: add different intent options (forward/ backwards)
         // return the value trough websockets
