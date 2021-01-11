@@ -33,20 +33,6 @@ public interface IAssistantService {
     void startModule(Module module, String question, List<Answer> answers, GoogleCloudDialogflowV2WebhookRequest request);
 
     /**
-     * The assistant determined that the user wants to go to the next question.
-     * Retrieve the answer and return its id.
-     * @param givenAnswerIds given by the user
-     * @return Intent respond with an array of id's and a given action (forward)
-     */
-    IntentRespond goForward(List<String> givenAnswerIds);
-
-    /**
-     * The assistant determined that the user wants to go back.
-     * @return Intent respond with a given action (back)
-     */
-    IntentRespond goBack();
-
-    /**
      * Create the intents for every answer of the current question
      * This will be called after the module editor has the next question
      * @param parentIntent the parent intent the intents are bound to (as children)

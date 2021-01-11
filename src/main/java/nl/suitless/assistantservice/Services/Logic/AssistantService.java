@@ -36,17 +36,6 @@ public class AssistantService implements IAssistantService {
     }
 
     @Override
-    public IntentRespond goForward(List<String> givenAnswersIds) {
-        // TODO: add create question
-        return new IntentRespond(Action.FORWARD, (Integer[]) givenAnswersIds.toArray());
-    }
-
-    @Override
-    public IntentRespond goBack() {
-        return new IntentRespond(Action.BACK);
-    }
-
-    @Override
     public void createQuestion(Intent parentIntent, List<Answer> possibleAnswers, GoogleCloudDialogflowV2WebhookRequest request) {
         // Get session
         Session session = new Session(request.getSession());

@@ -1,8 +1,10 @@
 package nl.suitless.assistantservice.Web.Controllers;
 
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2IntentTrainingPhrase;
 import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookRequest;
 import nl.suitless.assistantservice.Config.AssistantStompSessionHandler;
+import nl.suitless.assistantservice.Domain.Entities.Intent.Action;
 import nl.suitless.assistantservice.Domain.Entities.Intent.IntentRespond;
 import nl.suitless.assistantservice.Services.Interfaces.IAssistantService;
 import nl.suitless.assistantservice.Web.Wrappers.StartModuleWrapper;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,22 +25,25 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("")
 public class AssistantController {
     private final IAssistantService assistantService;
-    private WebSocketStompClient webSocketClient = new WebSocketStompClient(new StandardWebSocketClient());
+    private final StompSession stompSession;
+    private final String URL = "ws://localhost:8080/assistant";
 
 
     private static final JacksonFactory jacksonFactory = JacksonFactory.getDefaultInstance();
 
     @Autowired
-    public AssistantController(IAssistantService assistantService) {
+    public AssistantController(IAssistantService assistantService) throws ExecutionException, InterruptedException {
         this.assistantService = assistantService;
+        WebSocketStompClient webSocketClient = new WebSocketStompClient(new StandardWebSocketClient());
         webSocketClient.setMessageConverter(new MappingJackson2MessageConverter());
         StompSessionHandler sessionHandler = new AssistantStompSessionHandler();
-        webSocketClient.connect(URL, sessionHandler);
+        stompSession = webSocketClient.connect(URL, sessionHandler).get();
     }
 
     /**
@@ -57,8 +63,10 @@ public class AssistantController {
         } else {
             // an intent has been called and it is not the go back intent so lets go forward.
             // return to the websockets the given answer
-            var answer = intent.getTrainingPhrases().get(0);
-            // send message trough websocket client
+            GoogleCloudDialogflowV2IntentTrainingPhrase answer = intent.getTrainingPhrases().get(0);
+            // is this correct... needs to be tested
+            var intentRespond = new IntentRespond(Action.FORWARD, answer.getParts().get(0).getText());
+            stompSession.send("/assistant/intent", intentRespond);
         }
 
         // TODO: add different intent options (forward/ backwards)
@@ -88,16 +96,6 @@ public class AssistantController {
 
         // TODO: start websockets
 
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PostMapping(path = "/forward")
-    public ResponseEntity<?> goForward() {
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PostMapping(path = "/backward")
-    public ResponseEntity<?> goBackwards() {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

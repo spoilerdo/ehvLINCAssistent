@@ -2,15 +2,15 @@ package nl.suitless.assistantservice.Domain.Entities.Intent;
 
 public class IntentRespond {
     private Action action;
-    private Integer[] answerIds;
+    private String answer;
 
     public IntentRespond(Action action) {
         this.action = action;
     }
 
-    public IntentRespond(Action action, Integer[] answerIds) {
+    public IntentRespond(Action action, String answer) {
         this.action = action;
-        this.answerIds = answerIds;
+        this.answer = answer;
     }
 
     public Action getAction() {
@@ -21,11 +21,11 @@ public class IntentRespond {
         this.action = action;
     }
 
-    public Integer[] getAnswerIds() {
-        return answerIds;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setAnswerIds(Integer[] answerIds) {
-        this.answerIds = answerIds;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }
